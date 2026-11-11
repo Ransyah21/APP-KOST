@@ -9,7 +9,7 @@ import 'form_kamar_screen.dart';
 import 'kelola_booking_screen.dart';
 
 class DaftarKamarScreen extends StatefulWidget {
-  /// Variabel role dummy opsional (default false = penyewa, true = owner)
+  /// Variabel role (default false = penyewa, true = owner)
   final bool initialIsOwner;
 
   const DaftarKamarScreen({
@@ -25,8 +25,8 @@ class _DaftarKamarScreenState extends State<DaftarKamarScreen> {
   // Instance service untuk komunikasi ke database Supabase
   final KamarService _kamarService = KamarService();
 
-  // Role dummy sementara (bisa diubah langsung dari UI untuk keperluan testing)
-  late bool isOwner;
+  // Role tetap mengikuti nilai dari parameter widget (tidak bisa di-toggle manual lagi)
+  late final bool isOwner;
 
   // Filter status aktif ('Semua', 'Kosong', 'Terisi')
   String _selectedFilter = 'Semua';
@@ -77,42 +77,6 @@ class _DaftarKamarScreenState extends State<DaftarKamarScreen> {
                 _refreshData();
               },
             ),
-
-          // Toggle dummy role (Penyewa <-> Owner) untuk mempermudah testing
-          Padding(
-            padding: const EdgeInsets.only(right: 8.0),
-            child: ActionChip(
-              avatar: Icon(
-                isOwner ? Icons.admin_panel_settings : Icons.person_outline,
-                size: 16,
-                color: isOwner ? Colors.purple : Colors.blue,
-              ),
-              label: Text(
-                isOwner ? 'Mode: Owner' : 'Mode: Penyewa',
-                style: TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w600,
-                  color: isOwner ? Colors.purple.shade700 : Colors.blue.shade700,
-                ),
-              ),
-              backgroundColor: isOwner ? Colors.purple.shade50 : Colors.blue.shade50,
-              onPressed: () {
-                setState(() {
-                  isOwner = !isOwner;
-                });
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(
-                      isOwner
-                          ? 'Beralih ke mode Pemilik Kos (Owner)'
-                          : 'Beralih ke mode Calon Penghuni (Penyewa)',
-                    ),
-                    duration: const Duration(seconds: 1),
-                  ),
-                );
-              },
-            ),
-          ),
         ],
       ),
       body: Column(

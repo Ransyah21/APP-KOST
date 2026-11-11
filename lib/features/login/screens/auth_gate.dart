@@ -5,7 +5,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../models/user_profile.dart';
 import '../services/auth_service.dart';
-import 'home_screen.dart';
+import '../../dashboard/dashboard_page.dart';
 import 'login_screen.dart';
 
 /// Penjaga pintu: belum login -> LoginScreen, sudah login -> HomeScreen.
@@ -97,7 +97,7 @@ class _AuthGateState extends State<AuthGate> {
         onKeluar: AuthService.instance.logout,
       );
     }
-    return HomeScreen(profile: profile);
+    return DashboardPage(profile: profile);
   }
 }
 

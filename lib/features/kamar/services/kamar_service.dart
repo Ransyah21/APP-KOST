@@ -58,7 +58,7 @@ class KamarService {
           .maybeSingle();
 
       if (response == null) return null;
-      return KamarModel.fromJson(response as Map<String, dynamic>);
+      return KamarModel.fromJson(response);
     } catch (e) {
       throw Exception('Gagal memuat detail kamar: $e');
     }
@@ -164,7 +164,7 @@ class KamarService {
       final response =
           await _supabase.from('kamar').insert(payload).select().single();
 
-      return KamarModel.fromJson(response as Map<String, dynamic>);
+      return KamarModel.fromJson(response);
     } catch (e) {
       throw Exception('Gagal menambah kamar baru: $e');
     }
@@ -202,7 +202,7 @@ class KamarService {
           .select()
           .single();
 
-      return KamarModel.fromJson(response as Map<String, dynamic>);
+      return KamarModel.fromJson(response);
     } catch (e) {
       throw Exception('Gagal memperbarui kamar: $e');
     }
@@ -246,7 +246,7 @@ class KamarService {
           .select('*, kamar(nomor)')
           .single();
 
-      return BookingModel.fromJson(response as Map<String, dynamic>);
+      return BookingModel.fromJson(response);
     } catch (e) {
       throw Exception('Gagal mengajukan sewa kamar: $e');
     }

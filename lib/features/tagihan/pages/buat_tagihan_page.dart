@@ -91,7 +91,7 @@ class _BuatTagihanPageState extends State<BuatTagihanPage> {
               padding: const EdgeInsets.all(16),
               children: [
                 DropdownButtonFormField<BookingOption>(
-                  value: _booking,
+                  initialValue: _booking,
                   decoration: const InputDecoration(
                       labelText: 'Penghuni', border: OutlineInputBorder()),
                   items: [
@@ -108,7 +108,7 @@ class _BuatTagihanPageState extends State<BuatTagihanPage> {
                   Expanded(
                     flex: 3,
                     child: DropdownButtonFormField<int>(
-                      value: _bulan,
+                      initialValue: _bulan,
                       decoration: const InputDecoration(
                           labelText: 'Bulan', border: OutlineInputBorder()),
                       items: [
@@ -122,7 +122,7 @@ class _BuatTagihanPageState extends State<BuatTagihanPage> {
                   Expanded(
                     flex: 2,
                     child: DropdownButtonFormField<int>(
-                      value: _tahun,
+                      initialValue: _tahun,
                       decoration: const InputDecoration(
                           labelText: 'Tahun', border: OutlineInputBorder()),
                       items: [

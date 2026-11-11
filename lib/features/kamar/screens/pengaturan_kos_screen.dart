@@ -1,7 +1,6 @@
 // lib/features/kamar/screens/pengaturan_kos_screen.dart
 
 import 'package:flutter/material.dart';
-import '../models/pengaturan_model.dart';
 import '../services/kamar_service.dart';
 
 class PengaturanKosScreen extends StatefulWidget {

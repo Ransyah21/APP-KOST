@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import '../models/kamar_model.dart';
 import '../services/kamar_service.dart';
+import 'package:supabase_flutter/supabase_flutter.dart' show Supabase;
 
 class FormSewaScreen extends StatefulWidget {
   final KamarModel kamar;
@@ -91,7 +92,7 @@ class _FormSewaScreenState extends State<FormSewaScreen> {
     try {
       await _kamarService.ajukanSewa(
         kamarId: widget.kamar.id,
-        userId: null, // user_id diisi null dulu karena autentikasi belum ada
+        userId: Supabase.instance.client.auth.currentUser?.id, // user_id diisi null dulu karena autentikasi belum ada
         nama: _namaController.text.trim(),
         noHp: _noHpController.text.trim(),
         tanggalMasuk: _tanggalMasuk!,
